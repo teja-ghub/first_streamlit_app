@@ -36,15 +36,10 @@ my_data_rows = my_cur.fetchall()
 streamlit.header("The fruit load list contains:")
 streamlit.dataframe(my_data_rows)
 
-fruit_choice1 = streamlit.text_input('What fruit would you like to add?')
-streamlit.write('The user entered ', fruit_choice1)
+add_fruit = streamlit.text_input('What fruit would you like to add?')
+streamlit.write('The user entered ', add_fruit)
 
 
-fruityvice_response = requests.get("https://fruityvice.com/api/fruit/"+fruit_choice1)
-
-# write your own comment -what does the next line do? 
-fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
-# write your own comment - what does this do?
-streamlit.dataframe(fruityvice_normalized)
-
+fruityvice_add = requests.get("https://fruityvice.com/api/fruit/"+add_fruit)
+streamlit.write('Thanks for adding',fruityvice_add)
 
